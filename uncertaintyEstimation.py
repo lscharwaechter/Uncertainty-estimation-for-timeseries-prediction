@@ -129,7 +129,7 @@ for epoch in range(NUM_EPOCHS):
 n_future_steps = 50
 future_predictions = predict_future(model, x, n_future_steps)
 
-# Compute the GGN approximation
+# Compute the Hessian approximation
 print("Compute Hessian approximation...")
 hessian_approx = compute_hessian_approximation(model, criterion, x, y, alpha=1e-3)
 
