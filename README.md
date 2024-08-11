@@ -9,5 +9,5 @@ There are several ways to approximate the Hessian matrix and lower the complexit
 where $GG^T$ is given by the matrix multiplication of the jacobian of the loss with respect to the weights, $\alpha$ is a small constant and $\mathcal{I}$ is the identity matrix. The largest eigenvalues of the Hessian approximation then refer to the vector dimensions, in which a lot of change to the output happens when tuning these weights, i.e. contain certainty of the model. Ultimately, the inverse of the eigenvalues results in a notion of uncertainty. The figure below shows a possible presentation of uncertainty in timeseries forecasting using an LSTM model and a periodic signal, when the mean and standard deviation of the uncertainty are plotted. 
 
 <p align="center">
-<img src="https://github.com/user-attachments/assets/b37b2548-19cf-4fb9-811f-3bde41ec7aa1" width="450"/>
+<img src="https://github.com/user-attachments/assets/c7b06f68-975f-48cd-88f0-409210e4751c" width="450"/>
 </p>
