@@ -4,7 +4,7 @@ import torch.optim as optim
 import numpy as np
 import matplotlib.pyplot as plt
 
-# Define an LSTM-baased model for time series forecasting
+# Define an LSTM-based model for time series forecasting
 class LSTMmodel(nn.Module):
     def __init__(self, input_size, hidden_size, num_layers, output_size):
         super(LSTMmodel, self).__init__()
