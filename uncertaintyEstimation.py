@@ -159,7 +159,7 @@ plt.plot(future_time_steps, future_predictions, label='Forecasting', linewidth=2
 
 # Calculate uncertainty bounds
 mean_uncertainty = np.mean(uncertainty)
-std_uncertainty = np.sqrt(mean_uncertainty)
+std_uncertainty = np.std(uncertainty)
 
 # Plot uncertainty bounds
 plt.fill_between(future_time_steps, future_predictions - std_uncertainty, future_predictions + std_uncertainty, color='gray', alpha=0.5, label='Uncertainty bounds')
