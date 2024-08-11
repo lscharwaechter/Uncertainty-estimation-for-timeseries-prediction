@@ -5,7 +5,7 @@ In a deep neural network $f(x)$ the Hessian $\Psi$ of the loss with respect to t
 
 There are several ways to approximate the Hessian matrix and lower the complexity of the computation. In this script the Generalized Gauss-Newton method is used to calculate the Hessian approximation and the uncertainty of the timeseries forecasting. The approximation is given by
 <p align="center">
-  $$\Psi$ \approx \alpha \mathcal{I} + GG^T$
+  $\Psi \approx \alpha \mathcal{I} + GG^T$
 </p>
 
 <p align="center">
