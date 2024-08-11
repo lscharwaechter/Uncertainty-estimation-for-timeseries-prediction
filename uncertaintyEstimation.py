@@ -42,14 +42,14 @@ def predict_future(model, x, n_steps):
             pred = model(input_seq)
             predictions.append(pred.item())
             
-            # Prepare the next input sequence
-            # Remove the first time step and add the new prediction as the last time step
+            # Prepare the next input sequence by removing the first time step and
+            # adding the new prediction as the last time step
             pred = pred.unsqueeze(1)  # Make pred shape [1, 1, output_size]
             input_seq = torch.cat((input_seq[:, 1:, :], pred), dim=1)
     
     return np.array(predictions)
 
-# This fuction uses the Generalized Gauss-Newton method to approximate the 
+# This function uses the Generalized Gauss-Newton method to approximate the 
 # Hessian of the loss with respect to the weights/parameters
 def compute_hessian_approximation(model, criterion, x, y, alpha=1e-3):
     model.eval()
