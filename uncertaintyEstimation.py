@@ -122,7 +122,6 @@ for epoch in range(NUM_EPOCHS):
     loss = criterion(outputs, y)
     loss.backward()
     optimizer.step()
-
     if (epoch + 1) % 10 == 0:
         print(f'Epoch [{epoch + 1}/{NUM_EPOCHS}], Loss: {loss.item():.4f}')
 
