@@ -6,7 +6,7 @@ In a deep neural network $f(x)$ the Hessian $\Psi$ of the loss with respect to t
 There are several ways to approximate the Hessian matrix and lower the complexity of the computation. In this script the Generalized Gauss-Newton method is used to calculate the Hessian approximation and the uncertainty of the timeseries forecasting. The approximation is given by<p align="center">
   $\Psi \approx \alpha \mathcal{I} + GG^T$ </p>
   
-where $GG^T$ is given by matrix multiplication of the jacobian of the loss with respect to the weights, $alpha$ is a small constant and $\mathcal{I}$ is the identity matrix.
+where $GG^T$ is given by the matrix multiplication of the jacobian of the loss with respect to the weights, $\alpha$ is a small constant and $\mathcal{I}$ is the identity matrix. The largest eigenvalues of the Hessian approximation then refer to the vector dimensions, in which a lot of change to the output happens when tuning these weights, i.e. certainty of the model. 
 
 <p align="center">
 <img src="https://github.com/user-attachments/assets/b37b2548-19cf-4fb9-811f-3bde41ec7aa1" width="450"/>
