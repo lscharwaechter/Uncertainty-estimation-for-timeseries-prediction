@@ -1,4 +1,4 @@
-# Uncertainty Estimation for Timeseries Forecasting
+# Uncertainty Estimation for Timeseries Prediction
 
 In a deep neural network $f(x;\theta)$ the Hessian $\Psi$ of the loss with respect to the weights $\theta$ can give us a notion of uncertainty. Dimensions of the Hessian matrix, in which the model barely changes it's prediction when altering their values, can thereby be considered as dimensions, in which the model is uncertain. However, the calculation of the Hessian is in $\mathcal{O}(ND^2)$ which means that for deep neural networks with a large number of parameters $D$ and a considerably high number of samples $N$ in the dataset the computation and storage of the Hessian matrix become infeasible.
 
