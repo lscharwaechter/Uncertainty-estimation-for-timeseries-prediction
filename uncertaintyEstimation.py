@@ -119,19 +119,17 @@ eigenvalues, eigenvectors = torch.linalg.eig(hessian_approx)
 # Save the matrices
 np.save('uncertainty_hessian.npy',hessian_approx)
 np.save('uncertainty_eigenvalues.npy',eigenvalues)
-#hessian_approx = np.load('uncertainty_hessian.npy')
-#eigenvalues = np.load('uncertainty_eigenvalues.npy')
 
 # The inverse of the eigenvalues can be translated into a sense of uncertainty
 small_const = 1e-6
 uncertainty = 1.0 / (eigenvalues + small_const)
-#uncertainty = uncertainty.detach().numpy()
+uncertainty = uncertainty.detach().numpy()
 
 # Create a figure
-y_hat = model(x).squeeze().detach().numpy()
 plt.figure(figsize=(14, 7))
 
 # Plot the original signal and training predictions
+y_hat = outputs.squeeze().detach().numpy()
 plt.plot(t, data, label='Original Signal', linewidth=2)
 plt.plot(t[seq_length:], y_hat, label='Training Predictions', linewidth=2)
 
@@ -149,7 +147,7 @@ plt.axvline(x=t[seq_length], color='k', linestyle='--', linewidth=2)
 plt.legend(loc='upper left', fontsize=14)
 plt.xlabel('Timesteps', fontsize=20)
 plt.ylabel('Signal value', fontsize=20)
-plt.title('Time Series Forecasting with Uncertainty', fontsize=20)
+plt.title('Time Series Prediction with Uncertainty', fontsize=20)
 plt.xlim([0, n_observations]) 
 plt.tick_params(axis='both', which='major', labelsize=18)
 
