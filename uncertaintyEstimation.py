@@ -84,7 +84,7 @@ n_observations = 100
 t = np.arange(0, n_observations, 1)
 signal = A1*np.sin(t/T1)+A2*np.sin(t/T2) 
 data = signal + np.random.normal(0, 0.05, size=signal.shape) # Add noise
-seq_length = 30 # sequences for training
+seq_length = 30 # sequence length for training
 
 # Create a dataset from the signal observation
 x, y = create_sequences(data, seq_length)
