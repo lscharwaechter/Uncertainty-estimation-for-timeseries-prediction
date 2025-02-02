@@ -34,17 +34,13 @@ def create_sequences(data, seq_length):
 
 # This function uses the Generalized Gauss-Newton method to approximate the 
 # Hessian of the loss with respect to the weights/parameters
-def compute_hessian_approximation(model, criterion, x, y, alpha=1e-3):
+def compute_hessian_approximation(model, loss_function, x, y, alpha=1e-3):
     model.eval()
     model.zero_grad()
     
-    # Forward pass to compute predictions
+    # Forward pass to compute predictions, calculate the loss, and the gradients w.r.t. model parameters
     outputs = model(x)
-    
-    # Compute the loss
-    loss = criterion(outputs, y)
-    
-    # Compute gradients w.r.t. model parameters
+    loss = loss_function(outputs, y)
     loss.backward(retain_graph=True)
     
     # Get the Jacobian of the outputs w.r.t. the parameters
@@ -94,7 +90,7 @@ y = torch.from_numpy(y).float().unsqueeze(-1) # Add feature dimension
 
 # Initialize the model, loss function, and optimizer
 model = LSTMmodel(INPUT_SIZE, HIDDEN_SIZE, NUM_LAYERS, OUTPUT_SIZE)
-criterion = nn.MSELoss()
+loss_function = nn.MSELoss()
 optimizer = optim.Adam(model.parameters(), lr=LEARNING_RATE)
 
 # Train the model
@@ -102,7 +98,7 @@ for epoch in range(NUM_EPOCHS):
     model.train()
     optimizer.zero_grad()
     outputs = model(x)
-    loss = criterion(outputs, y)
+    loss = loss_function(outputs, y)
     loss.backward()
     optimizer.step()
 
@@ -111,7 +107,7 @@ for epoch in range(NUM_EPOCHS):
 
 # Compute the GGN approximation
 print("Compute Hessian approximation...")
-hessian_approx = compute_hessian_approximation(model, criterion, x, y, alpha=1e-3)
+hessian_approx = compute_hessian_approximation(model, loss_function, x, y, alpha=1e-3)
 
 # Eigenvalues for uncertainty analysis
 print("Compute eigenvalues...")
