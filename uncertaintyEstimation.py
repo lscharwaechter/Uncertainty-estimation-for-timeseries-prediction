@@ -4,7 +4,7 @@ import torch.optim as optim
 import numpy as np
 import matplotlib.pyplot as plt
 
-# Define an LSTM-baased model for time series forecasting
+# Define an LSTM-based model for time series forecasting
 class LSTMmodel(nn.Module):
     def __init__(self, input_size, hidden_size, num_layers, output_size):
         super(LSTMmodel, self).__init__()
@@ -12,7 +12,7 @@ class LSTMmodel(nn.Module):
         self.num_layers = num_layers
         self.lstm = nn.LSTM(input_size, hidden_size, num_layers, batch_first=True)
         self.fc = nn.Linear(hidden_size, output_size)
-    
+        
     def forward(self, x):
         h_0 = torch.zeros(self.num_layers, x.size(0), self.hidden_size).to(x.device)
         c_0 = torch.zeros(self.num_layers, x.size(0), self.hidden_size).to(x.device)
@@ -20,7 +20,8 @@ class LSTMmodel(nn.Module):
         out = self.fc(out[:, -1, :])
         return out
 
-# This function creates a dataset given a signal observation
+# Given a signal observation, this function creates a dataset with x as preceding signal windows
+# and y as subsequent windows
 def create_sequences(data, seq_length):
     xs = []
     ys = []
@@ -31,7 +32,7 @@ def create_sequences(data, seq_length):
         ys.append(y)
     return np.array(xs), np.array(ys)
 
-# This fuction uses the Generalized Gauss-Newton method to approximate the 
+# This function uses the Generalized Gauss-Newton method to approximate the 
 # Hessian of the loss with respect to the weights/parameters
 def compute_hessian_approximation(model, criterion, x, y, alpha=1e-3):
     model.eval()
