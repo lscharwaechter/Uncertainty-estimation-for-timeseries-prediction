@@ -11,4 +11,4 @@ where $GG^T$ is given by the matrix multiplication of the Jacobian of the loss w
 <img src="https://github.com/user-attachments/assets/4616b0cb-e915-4db3-82aa-a215cc9c05dc" width="550"/>
 </p>
 
-This example is for illustrative purposes only. Alternatives for uncertainty estimation include Monte Carlo Dropout, Bootstrap Resampling, Monte Carlo sampling or diagonal approximation of the Fisher Information matrix, or Laplace approximation.
+This example is for illustrative purposes only. Alternatives for uncertainty estimation include Monte Carlo Dropout, Bootstrap Resampling, Monte Carlo sampling, diagonal approximation of the Fisher Information matrix, or Laplace approximation.
